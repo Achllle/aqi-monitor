@@ -2,3 +2,4 @@ code/wifi.json
 code/credentials.json
 __pycache__/
 server/.env
+server/ts-airquality/state/
