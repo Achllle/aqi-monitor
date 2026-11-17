@@ -54,8 +54,7 @@ services:
       - TS_AUTHKEY=${TS_AUTHKEY}
       - TS_EXTRA_ARGS=--advertise-tags=tag:pi3
       - TS_STATE_DIR=/var/lib/tailscale
-      # Log in only when not logged in yet; re-running tailscale up with --advertise-tags on an
-      # already-tagged node is rejected by the control server
+      # TS_AUTHKEY is only needed for the first login; later starts run tailscale set
       - TS_AUTH_ONCE=true
       - TS_SERVE_CONFIG=/config/airquality.json
     volumes:

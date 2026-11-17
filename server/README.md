@@ -50,8 +50,9 @@ containers on your LAN:
 it is only used for the first login, after which the node's state lives in `ts-airquality/state/`.
 
 The sidecar sets `TS_AUTH_ONCE=true`, so on later starts it runs `tailscale set` instead of
-`tailscale up --advertise-tags=tag:pi3`. The control server rejects re-requesting tags on a node
-that is already tagged, which would otherwise leave the container in a restart loop.
+`tailscale up --authkey=... --advertise-tags=tag:pi3`. A restart then doesn't depend on the OAuth
+client in `.env` still being valid for the tag; if it isn't, `tailscale up` fails with
+`requested tags [tag:pi3] are invalid or not permitted` and the container restarts in a loop.
 
 ## Data model
 
